@@ -53,3 +53,4 @@ The user should only need to specify what to save, not where to save it.
 - Update the installer, template, and config together when changing names or paths.
 - Favor deterministic helper scripts for folder creation and path selection over prose-only instructions.
 - Validate a rendered skill, not just the template source, before considering changes complete.
+- Do not commit or push changes without explicit user approval for that specific commit or push.
