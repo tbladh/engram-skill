@@ -1,6 +1,8 @@
 # Engram
 
-Engram is a portable skill for Codex, Claude Code, and Cursor. When invoked, it saves the requested report, note, draft, or work sample in a predictable home-folder structure instead of asking where it belongs.
+Engram makes agent memory portable across repos and harnesses without adding more decisions to every prompt. Ask Codex, Claude Code, or Cursor to save a note, report, draft, sample, or side-task artifact, and Engram puts it into a predictable structure under your home folder. The benefit is less cognitive load: you specify what should be remembered, while the skill handles where it belongs.
+
+It is designed for the small but valuable outputs that otherwise get scattered across chats, scratch files, and project folders. Chronological records make past work easier to find, compare, reuse, and carry between tools.
 
 ## Install
 
@@ -51,8 +53,6 @@ The skill keeps one active entry during an interaction. If the request changes t
 ## Use
 
 Ask your agent to save a report, note, email draft, Slack draft, work sample, or data export. You only specify what to save; Engram chooses the standard location. Ask it to search previous saved work when you need to revisit or reuse an earlier artifact.
-
-The bootstrap URLs use this repository's `tbladh/engram-skill` path. If it moves again, update these URLs plus `DEFAULT_REPO_ARCHIVE_URL` in `config/defaults.env` and the corresponding constants in `install.sh` and `install.ps1`.
 
 ## License
 
