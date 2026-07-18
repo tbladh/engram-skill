@@ -3,7 +3,8 @@ set -euo pipefail
 
 # Keep this URL aligned with config/defaults.env for raw-script bootstrap.
 DEFAULT_REPO_ARCHIVE_URL="https://github.com/tbladh/engram-skill/archive/refs/heads/main.tar.gz"
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_SOURCE="${BASH_SOURCE[0]:-$0}"
+SCRIPT_DIR="$(cd "$(dirname "${SCRIPT_SOURCE}")" && pwd)"
 REPO_ROOT="${SCRIPT_DIR}"
 ARCHIVE_TMP_DIR=""
 RENDER_ROOT=""
