@@ -61,6 +61,13 @@ The skill keeps one active entry during an interaction. If the request changes t
 
 Ask your agent to save a report, note, email draft, Slack draft, work sample, or data export. You only specify what to save; Engram chooses the standard location. Ask it to search previous saved work when you need to revisit or reuse an earlier artifact.
 
+> [!TIP]
+> Example slash prompt:
+>
+> ```text
+> /engram Create a short markdown report summarizing the investigation we just completed. Also gather the relevant sample output, logs, and exported data files from the current context and save them with the report.
+> ```
+
 ## License
 
 [MIT](LICENSE)
