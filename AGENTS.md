@@ -24,7 +24,7 @@ The user should only need to specify what to save, not where to save it.
 - `template/skill/`: Portable skill source with placeholders.
 - `config/defaults.env`: Centralized naming and path defaults.
 - `scripts/render_skill.py`: Render the template into a concrete skill folder.
-- `install.sh`: Global installer for Codex, Claude, and Cursor.
+- `install.sh` and `install.ps1`: Global installers for Codex, Claude, and Cursor.
 
 ## Feature Completeness
 
@@ -36,15 +36,15 @@ The user should only need to specify what to save, not where to save it.
 - [x] Deterministic standard-library Python helper for entry creation, reuse, sequence allocation, and JSON path results.
 - [x] Search helper for listing entries and searching supported text files in `docs`.
 - [x] POSIX shell, PowerShell, and `cmd.exe` launchers for the bundled Python helpers.
-- [x] Self-healing guidance for missing directories, non-executable POSIX launchers, shell-specific launchers, and missing Python. ⚠ The prompting still needs a no-Python fallback that creates the required paths directly when the harness can write files.
-- [x] Global installer targets for Codex, Claude, and Cursor, with per-target selection and replacement confirmation. ⚠ The installer is Bash-only, so native Windows requires Git Bash or WSL.
-- [x] Copy-based replacement install, preserving a standalone copy for each target harness. ⚠ Installing legacy `~/.codex/skills` alongside `~/.agents/skills` can create duplicate discovery in other harnesses and should be reconsidered.
-- [x] Remote installer support through an explicit GitHub archive URL. ⚠ A standalone raw `install.sh` URL cannot yet satisfy the intended single-command bootstrap without `ENGRAM_REPO_ARCHIVE_URL` being supplied.
+- [x] Self-healing guidance for missing directories, shell-specific launchers, unavailable Python, and unavailable write permissions.
+- [x] Global Bash and PowerShell installers for Codex, Claude, and Cursor, with per-target selection and replacement confirmation.
+- [x] Staged copy-based replacement install that restores the previous version if activation fails. Legacy `~/.codex/skills` installation is opt-in.
+- [x] Single-command remote bootstrap with configured GitHub archive URLs and explicit environment overrides.
 - [x] Root-level instruction bridges for Claude and Cursor, with `AGENTS.md` as the source of truth.
 - [ ] Kiro support.
-- [ ] ⚠ Portable absolute skill-directory resolution in the prompting. The current `scripts/...` commands resolve relative to the workspace, not the installed skill directory.
-- [ ] ⚠ Search coverage for common source-control-friendly text extensions beyond the current allowlist.
-- [ ] ⚠ Explicit persistence and home-directory approval guidance. A skill can guide invocation but cannot mechanically guarantee that an agent saves every matching response; the prompt should require a file artifact and request scoped permission for `~/engram` when the harness blocks home-directory writes.
+- [x] Portable absolute skill-directory resolution in the prompting, including Claude Code's skill-directory variable.
+- [x] Search coverage for UTF-8 text files in `docs`, regardless of extension, with binary and oversized-file safeguards.
+- [x] Explicit persistence and scoped home-directory approval guidance.
 - [ ] ⚠ End-to-end installation and invocation validation in current Codex, Claude Code, and Cursor releases.
 
 ## Working Rules

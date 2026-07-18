@@ -47,8 +47,8 @@ Create the `data` entry only when one of these artifacts exists.
 
 ## Search Commands
 
-Use `scripts/engram-search list --json` for recent entries.
-Use `scripts/engram-search grep "text" --json` for markdown or plain-text content search.
+Resolve the installed skill directory first, then use `<skill-dir>/scripts/engram-search list --json` for recent entries.
+Use `<skill-dir>/scripts/engram-search grep "text" --json` for source-control-friendly text search.
 
 ## Example Slugs
 

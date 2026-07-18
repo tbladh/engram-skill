@@ -54,6 +54,9 @@ def ensure_entry(
         raise ValueError(
             "entry_rel must match YYYY-MM-DD/{nn}-slug using lowercase letters, digits, and hyphens."
         )
+    dt.date.fromisoformat(match.group("date"))
+    if int(match.group("sequence")) < 1:
+        raise ValueError("entry_rel sequence must be at least 1.")
 
     docs_dir = root / docs_subdir / entry_rel
     data_dir = root / data_subdir / entry_rel
@@ -79,7 +82,9 @@ def create_entry(args: argparse.Namespace) -> dict[str, object]:
     root = Path.home() / args.home_root_name
     date_str = iso_date(args.date)
     slug = slugify(args.slug)
-    sequence = args.sequence or next_sequence(root, args.docs_subdir, args.data_subdir, date_str)
+    if args.sequence is not None and args.sequence < 1:
+        raise ValueError("sequence must be at least 1.")
+    sequence = args.sequence if args.sequence is not None else next_sequence(root, args.docs_subdir, args.data_subdir, date_str)
     entry_rel = f"{date_str}/{sequence:02d}-{slug}"
     return ensure_entry(root, args.docs_subdir, args.data_subdir, entry_rel, args.with_data)
 

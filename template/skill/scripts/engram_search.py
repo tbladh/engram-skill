@@ -8,24 +8,7 @@ from pathlib import Path
 
 
 ENTRY_RE = re.compile(r"^(?P<date>\d{4}-\d{2}-\d{2})/(?P<sequence>\d+)-(?P<slug>[a-z0-9][a-z0-9-]*)$")
-TEXT_EXTENSIONS = {
-    ".adoc",
-    ".cfg",
-    ".conf",
-    ".csv",
-    ".env",
-    ".ini",
-    ".json",
-    ".log",
-    ".md",
-    ".rst",
-    ".text",
-    ".toml",
-    ".tsv",
-    ".txt",
-    ".yaml",
-    ".yml",
-}
+MAX_TEXT_FILE_BYTES = 4 * 1024 * 1024
 
 
 def parse_entry(path: Path, branch_root: Path) -> tuple[str, str, int, str] | None:
@@ -105,8 +88,13 @@ def iter_text_files(path: Path) -> list[Path]:
         return []
     files: list[Path] = []
     for child in path.rglob("*"):
-        if child.is_file() and child.suffix.lower() in TEXT_EXTENSIONS:
-            files.append(child)
+        if not child.is_file() or child.stat().st_size > MAX_TEXT_FILE_BYTES:
+            continue
+        try:
+            if b"\0" not in child.read_bytes()[:8192]:
+                files.append(child)
+        except OSError:
+            continue
     return files
 
 
@@ -167,6 +155,13 @@ def emit(result: object, as_json: bool) -> None:
     print(result)
 
 
+def positive_int(value: str) -> int:
+    parsed = int(value)
+    if parsed < 1:
+        raise argparse.ArgumentTypeError("must be at least 1")
+    return parsed
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Search saved engram entries.")
     parser.add_argument("--home-root-name", default="__HOME_ROOT_NAME__")
@@ -177,14 +172,14 @@ def build_parser() -> argparse.ArgumentParser:
 
     list_parser = subparsers.add_parser("list", help="List recent entries.")
     list_parser.add_argument("--query", help="Filter by entry path or slug.")
-    list_parser.add_argument("--limit", type=int, default=20)
+    list_parser.add_argument("--limit", type=positive_int, default=20)
     list_parser.add_argument("--json", action="store_true")
     list_parser.set_defaults(handler=list_entries)
 
     grep_parser = subparsers.add_parser("grep", help="Search text files under docs.")
     grep_parser.add_argument("pattern", help="Plain text to search for.")
     grep_parser.add_argument("--case-sensitive", action="store_true")
-    grep_parser.add_argument("--limit", type=int, default=20)
+    grep_parser.add_argument("--limit", type=positive_int, default=20)
     grep_parser.add_argument("--json", action="store_true")
     grep_parser.set_defaults(handler=grep_entries)
 
