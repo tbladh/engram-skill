@@ -79,6 +79,19 @@ function Confirm-Replace {
     if (!(Test-Path -LiteralPath $Path) -or $Yes) {
         return $true
     }
+    if (![Environment]::UserInteractive) {
+        Write-Warning "Skipped ${Harness}: installer input is not interactive. Rerun with -Yes to replace $Path."
+        return $false
+    }
+    try {
+        if ([Console]::IsInputRedirected) {
+            Write-Warning "Skipped ${Harness}: installer input is not interactive. Rerun with -Yes to replace $Path."
+            return $false
+        }
+    } catch {
+        Write-Warning "Skipped ${Harness}: installer input could not be checked. Rerun with -Yes to replace $Path."
+        return $false
+    }
     $reply = Read-Host "Replace existing $Harness install at $Path? [y/N]"
     return $reply -match "^(y|yes)$"
 }

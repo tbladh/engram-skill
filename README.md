@@ -13,15 +13,21 @@ curl -fsSL https://raw.githubusercontent.com/tbladh/engram-skill/main/install.sh
 Windows PowerShell:
 
 ```powershell
-irm https://raw.githubusercontent.com/tbladh/engram-skill/main/install.ps1 | iex
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/tbladh/engram-skill/main/install.ps1))) -Yes
 ```
 
-Both commands install globally for all three supported harnesses. The Bash quickstart replaces existing installed skill folders by staging a fresh copy and swapping it into place, so removed files do not linger. Python 3 must be available on `PATH`.
+Both quickstart commands install globally for all three supported harnesses and replace existing installed skill folders by staging a fresh copy and swapping it into place, so removed files do not linger. Python 3 must be available on `PATH`.
 
 To install from a clone and get prompted before replacement:
 
 ```bash
 bash install.sh
+```
+
+PowerShell clone equivalent:
+
+```powershell
+.\install.ps1
 ```
 
 Run `install.sh --codex`, `--claude`, or `--cursor` from a clone to install one target. Native Windows supports the matching `-Codex`, `-Claude`, and `-Cursor` PowerShell parameters. Legacy Codex installation is opt-in with `--legacy-codex` or `-LegacyCodex`.
