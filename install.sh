@@ -101,6 +101,13 @@ confirm_replace() {
     return 0
   fi
 
+  if [[ ! -t 0 ]]; then
+    printf '%s\n' \
+      "Skipped ${harness}: installer input is not interactive." \
+      "Rerun with --yes to replace ${path}." >&2
+    return 1
+  fi
+
   local reply=""
   if ! { exec 3<>/dev/tty; } 2>/dev/null; then
     printf '%s\n' \

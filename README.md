@@ -7,7 +7,7 @@ Engram is a portable skill for Codex, Claude Code, and Cursor. When invoked, it 
 macOS, Linux, Git Bash, or WSL:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/tbladh/engram-skill/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/tbladh/engram-skill/main/install.sh | bash -s -- --yes
 ```
 
 Windows PowerShell:
@@ -16,12 +16,12 @@ Windows PowerShell:
 irm https://raw.githubusercontent.com/tbladh/engram-skill/main/install.ps1 | iex
 ```
 
-Both commands install globally for all three supported harnesses. On a terminal, the Bash installer prompts before replacing an existing installation; in a non-interactive environment it skips existing installs. Python 3 must be available on `PATH`.
+Both commands install globally for all three supported harnesses. The Bash quickstart replaces existing installed skill folders by staging a fresh copy and swapping it into place, so removed files do not linger. Python 3 must be available on `PATH`.
 
-To update without prompts on macOS, Linux, Git Bash, or WSL:
+To install from a clone and get prompted before replacement:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/tbladh/engram-skill/main/install.sh | bash -s -- --yes
+bash install.sh
 ```
 
 Run `install.sh --codex`, `--claude`, or `--cursor` from a clone to install one target. Native Windows supports the matching `-Codex`, `-Claude`, and `-Cursor` PowerShell parameters. Legacy Codex installation is opt-in with `--legacy-codex` or `-LegacyCodex`.
