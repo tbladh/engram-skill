@@ -1,0 +1,4 @@
+interface:
+  display_name: "__PRODUCT_TITLE__"
+  short_description: "Save outputs into a predictable home structure"
+  default_prompt: "Use $__PRODUCT_NAME__ to save this output and any related artifacts into the standard engram structure."

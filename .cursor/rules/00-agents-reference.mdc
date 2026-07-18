@@ -1,0 +1,8 @@
+---
+description: Shared repository instructions bridge
+alwaysApply: true
+---
+
+See @AGENTS.md.
+
+Keep Cursor-specific duplication out of this file unless Cursor needs behavior that cannot live in `AGENTS.md`.

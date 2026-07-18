@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+set -eu
+
+script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+script="${script_dir}/engram_search.py"
+
+if command -v python3 >/dev/null 2>&1; then
+  exec python3 "$script" "$@"
+fi
+
+if command -v python >/dev/null 2>&1; then
+  exec python "$script" "$@"
+fi
+
+if command -v py >/dev/null 2>&1; then
+  exec py -3 "$script" "$@"
+fi
+
+printf '%s\n' "Engram needs Python 3, but no python3, python, or py launcher was found on PATH." >&2
+exit 127
