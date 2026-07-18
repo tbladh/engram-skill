@@ -16,7 +16,7 @@ Windows PowerShell:
 irm https://raw.githubusercontent.com/tbladh/engram-skill/main/install.ps1 | iex
 ```
 
-Both commands install globally for all three supported harnesses and prompt before replacing an existing installation. Python 3 must be available on `PATH`.
+Both commands install globally for all three supported harnesses. On a terminal, the Bash installer prompts before replacing an existing installation; in a non-interactive environment it skips existing installs. Python 3 must be available on `PATH`.
 
 To update without prompts on macOS, Linux, Git Bash, or WSL:
 

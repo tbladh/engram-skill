@@ -101,9 +101,17 @@ confirm_replace() {
     return 0
   fi
 
-  printf 'Replace existing %s install at %s? [y/N] ' "${harness}" "${path}" >&2
-  local reply
-  read -r reply
+  local reply=""
+  if ! { exec 3<>/dev/tty; } 2>/dev/null; then
+    printf '%s\n' \
+      "Skipped ${harness}: installer input is not interactive." \
+      "Rerun with --yes to replace ${path}." >&2
+    return 1
+  fi
+
+  printf 'Replace existing %s install at %s? [y/N] ' "${harness}" "${path}" >&3
+  read -r reply <&3 || true
+  exec 3>&-
   case "${reply}" in
     y|Y|yes|YES) return 0 ;;
     *) return 1 ;;
