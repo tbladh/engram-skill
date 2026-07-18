@@ -65,7 +65,6 @@ Ask your agent to save a report, note, email draft, Slack draft, work sample, or
 > Example slash prompt:
 >
 > `/engram Create a short markdown report summarizing the investigation we just completed.`
->
 > `Also gather the relevant sample output, logs, and exported data files from the current context and save them with the report.`
 
 ## License
