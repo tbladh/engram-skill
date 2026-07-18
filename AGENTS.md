@@ -1,13 +1,13 @@
 # Engram Repo
 
-This repository builds and distributes a portable skill plus installer for Codex, Claude, and Cursor.
+This repository builds and distributes a portable skill plus installer for Codex, Claude, Cursor, and Kiro.
 
 ## Source Of Truth
 
 `AGENTS.md` is the shared instruction file for this repo.
 
 - Keep shared repo guidance here.
-- Keep `CLAUDE.md`, `.cursorrules`, and `.cursor/rules/*.mdc` as thin bridges back to this file.
+- Keep `CLAUDE.md`, `.cursorrules`, and `.cursor/rules/*.mdc` as thin bridges back to this file. Kiro can consume `AGENTS.md` directly.
 - Do not move skill behavior notes into those bridge files unless a harness requires a format that `AGENTS.md` cannot express.
 
 ## Objective
@@ -24,7 +24,7 @@ The user should only need to specify what to save, not where to save it.
 - `template/skill/`: Portable skill source with placeholders.
 - `config/defaults.env`: Centralized naming and path defaults.
 - `scripts/render_skill.py`: Render the template into a concrete skill folder.
-- `install.sh` and `install.ps1`: Global installers for Codex, Claude, and Cursor.
+- `install.sh` and `install.ps1`: Global installers for Codex, Claude, Cursor, and Kiro.
 
 ## Feature Completeness
 
@@ -37,15 +37,15 @@ The user should only need to specify what to save, not where to save it.
 - [x] Search helper for listing entries and searching supported text files in `docs`.
 - [x] POSIX shell, PowerShell, and `cmd.exe` launchers for the bundled Python helpers.
 - [x] Self-healing guidance for missing directories, shell-specific launchers, unavailable Python, and unavailable write permissions.
-- [x] Global Bash and PowerShell installers for Codex, Claude, and Cursor, with per-target selection and replacement confirmation.
+- [x] Global Bash and PowerShell installers for Codex, Claude, Cursor, and Kiro, with per-target selection and replacement confirmation.
 - [x] Staged copy-based replacement install that restores the previous version if activation fails. Legacy `~/.codex/skills` installation is opt-in.
 - [x] Single-command remote bootstrap with configured GitHub archive URLs and explicit environment overrides.
 - [x] Root-level instruction bridges for Claude and Cursor, with `AGENTS.md` as the source of truth.
-- [ ] Kiro support.
+- [x] Kiro global skill installation at `~/.kiro/skills/engram`, including Bash and PowerShell target selection.
 - [x] Portable absolute skill-directory resolution in the prompting, including Claude Code's skill-directory variable.
 - [x] Search coverage for UTF-8 text files in `docs`, regardless of extension, with binary and oversized-file safeguards.
 - [x] Explicit persistence and scoped home-directory approval guidance.
-- [ ] ⚠ End-to-end installation and invocation validation in current Codex, Claude Code, and Cursor releases.
+- [ ] ⚠ End-to-end installation and invocation validation in current Codex, Claude Code, Cursor, and Kiro releases.
 
 ## Working Rules
 

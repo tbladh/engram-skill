@@ -3,6 +3,7 @@ param(
     [switch]$Codex,
     [switch]$Claude,
     [switch]$Cursor,
+    [switch]$Kiro,
     [switch]$LegacyCodex,
     [switch]$Yes,
     [string]$InstallHome
@@ -155,13 +156,15 @@ try {
     if ($Codex) { $targets += "codex" }
     if ($Claude) { $targets += "claude" }
     if ($Cursor) { $targets += "cursor" }
-    if (!$targets) { $targets = @("codex", "claude", "cursor") }
+    if ($Kiro) { $targets += "kiro" }
+    if (!$targets) { $targets = @("codex", "claude", "cursor", "kiro") }
 
     foreach ($target in $targets) {
         switch ($target) {
             "codex" { Install-One -Harness "Codex" -RootDir (Join-Path $InstallHome ".agents/skills") -SkillName $config.PRODUCT_NAME -RenderedSkillDir $renderedSkillDir }
             "claude" { Install-One -Harness "Claude" -RootDir (Join-Path $InstallHome ".claude/skills") -SkillName $config.PRODUCT_NAME -RenderedSkillDir $renderedSkillDir }
             "cursor" { Install-One -Harness "Cursor" -RootDir (Join-Path $InstallHome ".cursor/skills") -SkillName $config.PRODUCT_NAME -RenderedSkillDir $renderedSkillDir }
+            "kiro" { Install-One -Harness "Kiro" -RootDir (Join-Path $InstallHome ".kiro/skills") -SkillName $config.PRODUCT_NAME -RenderedSkillDir $renderedSkillDir }
         }
     }
 
