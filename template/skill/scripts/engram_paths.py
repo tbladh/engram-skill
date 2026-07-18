@@ -72,7 +72,10 @@ def ensure_entry(
         "slug": match.group("slug"),
         "docs_dir": str(docs_dir),
         "data_dir": str(data_dir),
+        "docs_dir_exists": docs_dir.exists(),
         "data_dir_exists": data_dir.exists(),
+        "docs_has_files": has_any_file(docs_dir),
+        "data_has_files": has_any_file(data_dir),
         "has_docs": has_any_file(docs_dir),
         "has_data": has_any_file(data_dir),
     }

@@ -27,6 +27,14 @@ When Engram is active for a save request, write the requested artifact before re
 5. If the task has bulky artifacts, create the matching data directory with `<skill-dir>/scripts/engram-paths ensure --entry-rel "<entry_rel>" --with-data --json`, then save those files under the returned `data_dir`.
 6. Reuse the same entry for the rest of the interaction unless the user clearly changes topic. If that happens, point it out and ask whether to shift to a new entry.
 
+## Helper Output Contract
+
+- `create` and `ensure` create `docs_dir` before returning. If the command exits successfully, save text directly into `docs_dir`.
+- `docs_dir_exists` and `data_dir_exists` report whether those directories exist.
+- `docs_has_files` and `data_has_files` report whether those directories contain files.
+- Legacy fields `has_docs` and `has_data` mean the same thing as `docs_has_files` and `data_has_files`; they do not mean the directory is missing.
+- `data_dir` may be returned even when `data_dir_exists` is false. Only create or use it when bulky artifacts exist or `--with-data` was requested.
+
 ## Workflow
 
 ### Establish the entry
