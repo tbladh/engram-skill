@@ -11,7 +11,7 @@ The installer supports global skill installs for Codex, Claude Code, Cursor, Kir
 ## Install
 
 > [!WARNING]
-> The quickstart installer is intentionally broad: it installs Engram into the default global skill directories for Codex, Claude Code, Cursor, Kiro, and Cline, even if some harnesses are not installed. When replacing an existing Engram install, it overwrites the entire `engram` skill directory for that harness. Any local changes inside those installed skill directories will be lost.
+> The quickstart installer is intentionally broad: it installs Engram into the default global skill directories for Codex, Claude Code, Cursor, Kiro, and Cline, even if some harnesses are not installed. When replacing an existing Engram install, it overwrites the entire `engram` skill directory for that harness. Any local changes inside those installed `engram` skill directories will be lost.
 
 macOS, Linux, Git Bash, or WSL:
 
@@ -25,7 +25,7 @@ Windows PowerShell:
 & ([scriptblock]::Create((irm https://raw.githubusercontent.com/tbladh/engram-skill/main/install.ps1))) -Yes
 ```
 
-Both commands install globally for the default broad harness set and replace existing installed skill folders by staging a fresh copy and swapping it into place, so removed files do not linger. Python 3 must be available on `PATH`.
+Both commands install globally for the default broad harness set and replace existing installed `engram` skill folders by staging a fresh copy and swapping it into place, so removed files do not linger. Python 3 must be available on `PATH`.
 
 ### Explicit Harness Installs
 
