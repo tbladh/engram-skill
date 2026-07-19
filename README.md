@@ -11,7 +11,7 @@ The installer supports global skill installs for Codex, Claude Code, Cursor, Kir
 ## Install
 
 > [!WARNING]
-> The quickstart installer is intentionally broad: it installs Engram into the default global skill directories for Codex, Claude Code, Cursor, Kiro, and Cline, even if some harnesses are not installed. Windsurf can discover the Codex-compatible `~/.agents/skills/` install, so its native `~/.codeium/windsurf/skills/` location is skipped by default to avoid duplicate same-name skills. When replacing an existing Engram install, it overwrites the entire `engram` skill directory for that harness. Any local changes inside those installed skill directories will be lost.
+> The quickstart installer is intentionally broad: it installs Engram into the default global skill directories for Codex, Claude Code, Cursor, Kiro, and Cline, even if some harnesses are not installed. When replacing an existing Engram install, it overwrites the entire `engram` skill directory for that harness. Any local changes inside those installed skill directories will be lost.
 
 macOS, Linux, Git Bash, or WSL:
 
