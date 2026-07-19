@@ -26,6 +26,7 @@ Options:
   --cursor            Install only to Cursor
   --kiro              Install only to Kiro
   --cline             Install only to Cline
+  --copilot           Install only to GitHub Copilot
   --windsurf          Install only to Windsurf
   --legacy-codex      Also install to the legacy Codex skills path
   --no-legacy-codex   Do not install to the legacy Codex skills path (default)
@@ -163,7 +164,7 @@ install_one() {
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --all) TARGET_MODE="all" ;;
-    --codex|--claude|--cursor|--kiro|--cline|--windsurf)
+    --codex|--claude|--cursor|--kiro|--cline|--copilot|--windsurf)
       [[ "${TARGET_MODE}" == "all" ]] && TARGET_MODE=""
       TARGET_MODE="${TARGET_MODE} $1"
       ;;
@@ -203,6 +204,7 @@ for target in "${TARGETS[@]}"; do
     cursor) install_one "Cursor" "${INSTALL_HOME_DIR}/.cursor/skills" "${PRODUCT_NAME}" "${RENDERED_SKILL_DIR}" ;;
     kiro) install_one "Kiro" "${INSTALL_HOME_DIR}/.kiro/skills" "${PRODUCT_NAME}" "${RENDERED_SKILL_DIR}" ;;
     cline) install_one "Cline" "${INSTALL_HOME_DIR}/.cline/skills" "${PRODUCT_NAME}" "${RENDERED_SKILL_DIR}" ;;
+    copilot) install_one "GitHub Copilot" "${INSTALL_HOME_DIR}/.copilot/skills" "${PRODUCT_NAME}" "${RENDERED_SKILL_DIR}" ;;
     windsurf) install_one "Windsurf" "${INSTALL_HOME_DIR}/.codeium/windsurf/skills" "${PRODUCT_NAME}" "${RENDERED_SKILL_DIR}" ;;
   esac
 done

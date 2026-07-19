@@ -1,12 +1,12 @@
 # Engram
 
-Engram makes agent memory portable across repos and harnesses without adding more decisions to every prompt. Ask Codex, Claude Code, Cursor, Kiro, Cline, or Windsurf to save a note, report, draft, sample, or side-task artifact, and Engram puts it into a predictable structure under your home folder. The benefit is less cognitive load: you specify what should be remembered, while the skill handles where it belongs.
+Engram makes agent memory portable across repos and harnesses without adding more decisions to every prompt. Ask Codex, Claude Code, Cursor, Kiro, Cline, GitHub Copilot, or Windsurf to save a note, report, draft, sample, or side-task artifact, and Engram puts it into a predictable structure under your home folder. The benefit is less cognitive load: you specify what should be remembered, while the skill handles where it belongs.
 
 It is designed for the small but valuable outputs that otherwise get scattered across chats, scratch files, and project folders. Chronological records make past work easier to find, compare, reuse, and carry between tools.
 
 ## Supported Harnesses
 
-The installer supports global skill installs for Codex, Claude Code, Cursor, Kiro, Cline, and Windsurf. Kiro support uses its documented global skill directory at `~/.kiro/skills/`. The default broad install supports Windsurf through the Codex-compatible `~/.agents/skills/` install that Windsurf can discover. The native Windsurf path, `~/.codeium/windsurf/skills/`, is installed only when Windsurf is selected explicitly.
+The installer supports global skill installs for Codex, Claude Code, Cursor, Kiro, Cline, GitHub Copilot, and Windsurf. Kiro support uses its documented global skill directory at `~/.kiro/skills/`. The default broad install supports GitHub Copilot and Windsurf through the Codex-compatible `~/.agents/skills/` install that both can discover. Native paths, `~/.copilot/skills/` and `~/.codeium/windsurf/skills/`, are installed only when those harnesses are selected explicitly.
 
 ## Install
 
@@ -99,6 +99,20 @@ Windows PowerShell:
 
 ```powershell
 & ([scriptblock]::Create((irm https://raw.githubusercontent.com/tbladh/engram-skill/main/install.ps1))) -Cline -Yes
+```
+
+**GitHub Copilot Native Path**
+
+macOS, Linux, Git Bash, or WSL:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/tbladh/engram-skill/main/install.sh | bash -s -- --copilot --yes
+```
+
+Windows PowerShell:
+
+```powershell
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/tbladh/engram-skill/main/install.ps1))) -Copilot -Yes
 ```
 
 **Windsurf Native Path**

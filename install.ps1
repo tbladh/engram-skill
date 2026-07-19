@@ -5,6 +5,7 @@ param(
     [switch]$Cursor,
     [switch]$Kiro,
     [switch]$Cline,
+    [switch]$Copilot,
     [switch]$Windsurf,
     [switch]$LegacyCodex,
     [switch]$Yes,
@@ -160,6 +161,7 @@ try {
     if ($Cursor) { $targets += "cursor" }
     if ($Kiro) { $targets += "kiro" }
     if ($Cline) { $targets += "cline" }
+    if ($Copilot) { $targets += "copilot" }
     if ($Windsurf) { $targets += "windsurf" }
     if (!$targets) { $targets = @("codex", "claude", "cursor", "kiro", "cline") }
 
@@ -170,6 +172,7 @@ try {
             "cursor" { Install-One -Harness "Cursor" -RootDir (Join-Path $InstallHome ".cursor/skills") -SkillName $config.PRODUCT_NAME -RenderedSkillDir $renderedSkillDir }
             "kiro" { Install-One -Harness "Kiro" -RootDir (Join-Path $InstallHome ".kiro/skills") -SkillName $config.PRODUCT_NAME -RenderedSkillDir $renderedSkillDir }
             "cline" { Install-One -Harness "Cline" -RootDir (Join-Path $InstallHome ".cline/skills") -SkillName $config.PRODUCT_NAME -RenderedSkillDir $renderedSkillDir }
+            "copilot" { Install-One -Harness "GitHub Copilot" -RootDir (Join-Path $InstallHome ".copilot/skills") -SkillName $config.PRODUCT_NAME -RenderedSkillDir $renderedSkillDir }
             "windsurf" { Install-One -Harness "Windsurf" -RootDir (Join-Path (Join-Path (Join-Path $InstallHome ".codeium") "windsurf") "skills") -SkillName $config.PRODUCT_NAME -RenderedSkillDir $renderedSkillDir }
         }
     }

@@ -15,7 +15,7 @@ When Engram is active for a save request, write the requested artifact before re
 
 ## Quick Start
 
-1. Resolve the absolute directory containing this `SKILL.md` as `<skill-dir>`. This is the installed skill directory, not the current workspace. In Claude Code, `${CLAUDE_SKILL_DIR}` is available. In Kiro global installs, use `~/.kiro/skills/__PRODUCT_NAME__` if no skill path is exposed. In Cline global installs, use `~/.cline/skills/__PRODUCT_NAME__` if no skill path is exposed. In Windsurf global installs, use `~/.codeium/windsurf/skills/__PRODUCT_NAME__` if no skill path is exposed. In other harnesses, use this skill's listed file path.
+1. Resolve the absolute directory containing this `SKILL.md` as `<skill-dir>`. This is the installed skill directory, not the current workspace. In Claude Code, `${CLAUDE_SKILL_DIR}` is available. In Kiro global installs, use `~/.kiro/skills/__PRODUCT_NAME__` if no skill path is exposed. In Cline global installs, use `~/.cline/skills/__PRODUCT_NAME__` if no skill path is exposed. In GitHub Copilot native installs, use `~/.copilot/skills/__PRODUCT_NAME__` if no skill path is exposed. In Windsurf global installs, use `~/.codeium/windsurf/skills/__PRODUCT_NAME__` if no skill path is exposed. In other harnesses, use this skill's listed file path.
 2. Pick a concise slug for the current interaction.
 3. Create the docs entry with the launcher for the current shell:
 
