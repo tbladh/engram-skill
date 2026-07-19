@@ -31,7 +31,7 @@ Both commands install globally for the default broad harness set and replace exi
 
 Use these when you only want Engram installed for one harness.
 
-Codex:
+**Codex**
 
 macOS, Linux, Git Bash, or WSL:
 
@@ -45,7 +45,7 @@ Windows PowerShell:
 & ([scriptblock]::Create((irm https://raw.githubusercontent.com/tbladh/engram-skill/main/install.ps1))) -Codex -Yes
 ```
 
-Claude Code:
+**Claude Code**
 
 macOS, Linux, Git Bash, or WSL:
 
@@ -59,7 +59,7 @@ Windows PowerShell:
 & ([scriptblock]::Create((irm https://raw.githubusercontent.com/tbladh/engram-skill/main/install.ps1))) -Claude -Yes
 ```
 
-Cursor:
+**Cursor**
 
 macOS, Linux, Git Bash, or WSL:
 
@@ -73,7 +73,7 @@ Windows PowerShell:
 & ([scriptblock]::Create((irm https://raw.githubusercontent.com/tbladh/engram-skill/main/install.ps1))) -Cursor -Yes
 ```
 
-Kiro:
+**Kiro**
 
 macOS, Linux, Git Bash, or WSL:
 
@@ -87,7 +87,7 @@ Windows PowerShell:
 & ([scriptblock]::Create((irm https://raw.githubusercontent.com/tbladh/engram-skill/main/install.ps1))) -Kiro -Yes
 ```
 
-Cline:
+**Cline**
 
 macOS, Linux, Git Bash, or WSL:
 
@@ -101,7 +101,7 @@ Windows PowerShell:
 & ([scriptblock]::Create((irm https://raw.githubusercontent.com/tbladh/engram-skill/main/install.ps1))) -Cline -Yes
 ```
 
-Windsurf native path:
+**Windsurf Native Path**
 
 macOS, Linux, Git Bash, or WSL:
 
