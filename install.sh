@@ -17,14 +17,16 @@ usage() {
   cat <<'EOF'
 Usage: install.sh [options]
 
-Install Engram globally for Codex, Claude, Cursor, and Kiro.
+Install Engram globally for Codex, Claude, Cursor, Kiro, and Cline.
 
 Options:
-  --all               Install to all supported harnesses (default)
+  --all               Install to the default broad harness set
   --codex             Install only to Codex
   --claude            Install only to Claude
   --cursor            Install only to Cursor
   --kiro              Install only to Kiro
+  --cline             Install only to Cline
+  --windsurf          Install only to Windsurf
   --legacy-codex      Also install to the legacy Codex skills path
   --no-legacy-codex   Do not install to the legacy Codex skills path (default)
   --yes               Replace existing installed folders without prompting
@@ -161,7 +163,7 @@ install_one() {
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --all) TARGET_MODE="all" ;;
-    --codex|--claude|--cursor|--kiro)
+    --codex|--claude|--cursor|--kiro|--cline|--windsurf)
       [[ "${TARGET_MODE}" == "all" ]] && TARGET_MODE=""
       TARGET_MODE="${TARGET_MODE} $1"
       ;;
@@ -187,7 +189,7 @@ fi
 
 declare -a TARGETS=()
 if [[ "${TARGET_MODE}" == "all" ]]; then
-  TARGETS=(codex claude cursor kiro)
+  TARGETS=(codex claude cursor kiro cline)
 else
   for item in ${TARGET_MODE}; do
     TARGETS+=("${item#--}")
@@ -200,6 +202,8 @@ for target in "${TARGETS[@]}"; do
     claude) install_one "Claude" "${INSTALL_HOME_DIR}/.claude/skills" "${PRODUCT_NAME}" "${RENDERED_SKILL_DIR}" ;;
     cursor) install_one "Cursor" "${INSTALL_HOME_DIR}/.cursor/skills" "${PRODUCT_NAME}" "${RENDERED_SKILL_DIR}" ;;
     kiro) install_one "Kiro" "${INSTALL_HOME_DIR}/.kiro/skills" "${PRODUCT_NAME}" "${RENDERED_SKILL_DIR}" ;;
+    cline) install_one "Cline" "${INSTALL_HOME_DIR}/.cline/skills" "${PRODUCT_NAME}" "${RENDERED_SKILL_DIR}" ;;
+    windsurf) install_one "Windsurf" "${INSTALL_HOME_DIR}/.codeium/windsurf/skills" "${PRODUCT_NAME}" "${RENDERED_SKILL_DIR}" ;;
   esac
 done
 
