@@ -52,6 +52,8 @@ The user should only need to specify what to save, not where to save it.
   - [x] Codex on Windows.
   - [x] Codex on macOS.
   - [x] Claude Code on macOS.
+  - [x] Copilot on Windows.
+  - [x] Copilot on macOs.
 
 ## Working Rules
 
