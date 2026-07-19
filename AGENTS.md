@@ -47,7 +47,10 @@ The user should only need to specify what to save, not where to save it.
 - [x] Portable absolute skill-directory resolution in the prompting, including Claude Code's skill-directory variable.
 - [x] Search coverage for UTF-8 text files in `docs`, regardless of extension, with binary and oversized-file safeguards.
 - [x] Explicit persistence and scoped home-directory approval guidance.
-- [ ] ⚠ End-to-end installation and invocation validation in current Codex, Claude Code, Cursor, Kiro, Cline, and Windsurf releases.
+- [ ] End-to-end installation and invocation validation in current Codex, Claude Code, Cursor, Kiro, Cline, and Windsurf releases.
+  - [x] Codex on Windows.
+  - [x] Codex on macOS.
+  - [x] Claude Code on macOS.
 
 ## Working Rules
 
